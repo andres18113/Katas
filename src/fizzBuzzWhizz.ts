@@ -47,6 +47,11 @@ const isPrime = (input: number): boolean => {
 
 // Applies the FizzBuzzWhizz rules to a positive integer.
 export const game = (input: number) => {
+  // Reject zero and negative numbers.
+  if (input <= 0) {
+    throw new RangeError("Input must be a positive integer.");
+  }
+
   // Check prime numbers before applying the standard rules.
   if (isPrime(input)) {
     if (input === 3) {

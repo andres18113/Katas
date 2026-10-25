@@ -86,4 +86,8 @@ describe("FizzBuzzWhizz Game", () => {
     const result = game(121);
     expect(result).toEqual(121);
   });
+  // Verify that negative numbers are rejected.
+  test("should reject negative numbers", () => {
+    expect(() => game(-3)).toThrow(RangeError);
+  });
 });
