@@ -27,8 +27,11 @@ Add the following new rule, if a number is prime return Whizz. Only worry about 
   5      BuzzWhizz
  */
 export const game = (input: number) => {
-  if (input % 3 == 0){
+  if (input % 3 === 0){
     return "Fizz";
+  }
+  if (input % 5 === 0){
+    return "Buzz";
   }
   return input;
 };

@@ -19,4 +19,8 @@ describe('FizzBuzz Game', () => {
     const result = game(4);
     expect(result).toEqual(4);
   });
+  test("If the number is 5 return 5", () => {
+    const result = game(5);
+    expect(result).toEqual("Buzz");
+  });
 });
