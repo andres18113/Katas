@@ -26,12 +26,25 @@ Add the following new rule, if a number is prime return Whizz. Only worry about 
   4      4
   5      BuzzWhizz
  */
+
+  
+// Applies the FizzBuzz rules to a positive integer.
 export const game = (input: number) => {
-  if (input % 3 === 0){
+  // Check combined divisibility first to prioritize FizzBuzz.
+  if (input % 3 === 0 && input % 5 === 0) {
+    return "FizzBuzz";
+  }
+
+  // Check divisibility by 3.
+  if (input % 3 === 0) {
     return "Fizz";
   }
-  if (input % 5 === 0){
+
+  // Check divisibility by 5.
+  if (input % 5 === 0) {
     return "Buzz";
   }
+
+  // Return the original number if no conditions are met.
   return input;
 };

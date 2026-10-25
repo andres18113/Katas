@@ -23,4 +23,8 @@ describe('FizzBuzz Game', () => {
     const result = game(5);
     expect(result).toEqual("Buzz");
   });
+  test("If the number is 15 return FizzBuzz", () => {
+  const result = game(15);
+  expect(result).toEqual("FizzBuzz");
+  });
 });
