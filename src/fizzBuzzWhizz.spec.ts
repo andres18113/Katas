@@ -1,21 +1,21 @@
 import { game } from "./fizzBuzzWhizz";
 
-describe("FizzBuzz Game", () => {
-  // Verify that numbers without matching rules remain unchanged.
+describe("FizzBuzzWhizz Game", () => {
+  // Verify that 1 remains unchanged.
   test("If the number is 1 return 1", () => {
     const result = game(1);
     expect(result).toEqual(1);
   });
 
-  test("If the number is 2 return 2", () => {
+  // Verify prime numbers and their combined rules.
+  test("If the number is 2 return Whizz", () => {
     const result = game(2);
-    expect(result).toEqual(2);
+    expect(result).toEqual("Whizz");
   });
 
-  // Verify the Fizz rule for numbers divisible by 3.
-  test("If the number is 3 return Fizz", () => {
+  test("If the number is 3 return FizzWhizz", () => {
     const result = game(3);
-    expect(result).toEqual("Fizz");
+    expect(result).toEqual("FizzWhizz");
   });
 
   test("If the number is 4 return 4", () => {
@@ -23,26 +23,67 @@ describe("FizzBuzz Game", () => {
     expect(result).toEqual(4);
   });
 
-  // Verify the Buzz rule for numbers divisible by 5.
-  test("If the number is 5 return Buzz", () => {
+  test("If the number is 5 return BuzzWhizz", () => {
     const result = game(5);
-    expect(result).toEqual("Buzz");
+    expect(result).toEqual("BuzzWhizz");
   });
 
-  // Verify the combined rule for numbers divisible by both 3 and 5.
+  test("If the number is 7 return Whizz", () => {
+    const result = game(7);
+    expect(result).toEqual("Whizz");
+  });
+
+  // Verify the Fizz and Buzz rules for composite numbers.
+  test("If the number is 9 return Fizz", () => {
+    const result = game(9);
+    expect(result).toEqual("Fizz");
+  });
+
   test("If the number is 15 return FizzBuzz", () => {
     const result = game(15);
     expect(result).toEqual("FizzBuzz");
   });
 
-  // Verify FizzBuzz rules at different scales using multiples of 15.
+  test("If the number is 25 return Buzz", () => {
+    const result = game(25);
+    expect(result).toEqual("Buzz");
+  });
+
+  test("If the number is 49 return 49", () => {
+    const result = game(49);
+    expect(result).toEqual(49);
+  });
+
+  test("If the number is 97 return Whizz", () => {
+    const result = game(97);
+    expect(result).toEqual("Whizz");
+  });
+
+  // Verify FizzBuzz rules using different multiples of 15.
   test("should validate FizzBuzz rules using multiples of 15", () => {
-    for (const k of [0, 1, 10, 100000]) {
-      // Check the four possible divisibility cases.
+    // Use positive odd values to avoid prime numbers in these cases.
+    for (const k of [1, 3, 11, 100001]) {
       expect(game(15 * k + 1)).toBe(15 * k + 1);
       expect(game(15 * k + 3)).toBe("Fizz");
       expect(game(15 * k + 5)).toBe("Buzz");
       expect(game(15 * k + 15)).toBe("FizzBuzz");
     }
+  });
+
+  // Verify prime numbers greater than 100.
+  test("If the number is 101 return Whizz", () => {
+    const result = game(101);
+    expect(result).toEqual("Whizz");
+  });
+
+  test("If the number is 2003 return Whizz", () => {
+    const result = game(2003);
+    expect(result).toEqual("Whizz");
+  });
+
+  // Verify that composite numbers are not classified as prime.
+  test("If the number is 121 return 121", () => {
+    const result = game(121);
+    expect(result).toEqual(121);
   });
 });

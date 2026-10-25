@@ -27,9 +27,39 @@ Add the following new rule, if a number is prime return Whizz. Only worry about 
   5      BuzzWhizz
  */
 
-  
-// Applies the FizzBuzz rules to a positive integer.
+// Check whether a positive integer is prime.
+const isPrime = (input: number): boolean => {
+  // Numbers less than 2 are not prime.
+  if (input < 2) {
+    return false;
+  }
+
+  // Check possible divisors up to the square root.
+  for (let divisor = 2; divisor * divisor <= input; divisor++) {
+    if (input % divisor === 0) {
+      return false;
+    }
+  }
+
+  // No divisors found, so the number is prime.
+  return true;
+};
+
+// Applies the FizzBuzzWhizz rules to a positive integer.
 export const game = (input: number) => {
+  // Check prime numbers before applying the standard rules.
+  if (isPrime(input)) {
+    if (input === 3) {
+      return "FizzWhizz";
+    }
+
+    if (input === 5) {
+      return "BuzzWhizz";
+    }
+
+    return "Whizz";
+  }
+
   // Check combined divisibility first to prioritize FizzBuzz.
   if (input % 3 === 0 && input % 5 === 0) {
     return "FizzBuzz";
